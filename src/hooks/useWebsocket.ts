@@ -25,7 +25,7 @@ export const useWebSocket = () => {
 				quantity: data.q,
 				time: new Date(data.T).toLocaleTimeString(),
 			};
-			setTrades((prev) => [trade, ...prev]);
+			setTrades((prev) => [trade, ...prev].slice(0, 20));
 		};
 
 		return () => ws.close();
