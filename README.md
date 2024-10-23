@@ -2,6 +2,8 @@
 
 Thank you for taking the time to check my solution.
 
+Please navigate to the project directory then use `npm start` to start the app.
+
 ## Features
 
 - Basic React app with TypeScript (cra), Zustand for state management
