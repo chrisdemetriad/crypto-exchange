@@ -34,16 +34,16 @@ App.tsx
 index.tsx
 
 src/
-components/
-  ─ CurrenciesList.tsx
-  ─ CurrencySelector.tsx
-  ─ Chart.tsx
-  ─ ThemeSwitcher.tsx
-hooks/
-─ useWebSocket.ts
-stores/
-  - useUserSettingsStore.ts
-  - useTradingPairsStore.ts
+  components/
+    ─ CurrenciesList.tsx
+    ─ CurrencySelector.tsx
+    ─ Chart.tsx
+    ─ ThemeSwitcher.tsx
+  hooks/
+  ─ useWebSocket.ts
+  stores/
+    - useUserSettingsStore.ts
+    - useTradingPairsStore.ts
 
 styles/ or a theme folder to keep the global styles, provider, etc - useStore.ts
 ```
