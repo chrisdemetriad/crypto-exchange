@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { CurrenciesList } from "./components/CurrenciesList";
-import { CurrencySelector } from "./components/CurrencySelector";
+import { TradeList } from "./components/TradeList";
+import { TradeSwitch } from "./components/TradeSwitch";
 import { useTradingPairsStore } from "./stores/useTradingPairsStore";
 
 export const TradingApp: FC = () => {
@@ -11,8 +11,8 @@ export const TradingApp: FC = () => {
 			<header>
 				<h1>Binance Latest {tradingPair.toUpperCase()} Trades</h1>
 			</header>
-			<CurrencySelector />
-			<CurrenciesList />
+			<TradeSwitch />
+			<TradeList />
 		</div>
 	);
 };

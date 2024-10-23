@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useTradingPairsStore } from "../stores/useTradingPairsStore";
 
-export const CurrencySelector: FC = () => {
+export const TradeSwitch: FC = () => {
 	const setTradingPair = useTradingPairsStore((state) => state.setTradingPair);
 	const tradingPair = useTradingPairsStore((state) => state.tradingPair);
 

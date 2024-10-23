@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useWebSocket } from "../hooks/useWebsocket";
 
-export const CurrenciesList: FC = () => {
+export const TradeList: FC = () => {
 	const trades = useWebSocket();
 
 	return (
