@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTradingPairsStore } from "../stores/useTradingPairsStore";
 
-interface Trade {
+interface ITrade {
 	id: number;
 	price: string;
 	quantity: string;
@@ -9,7 +9,7 @@ interface Trade {
 }
 
 export const useWebSocket = () => {
-	const [trades, setTrades] = useState<Trade[]>([]);
+	const [trades, setTrades] = useState<ITrade[]>([]);
 	const tradingPair = useTradingPairsStore((state) => state.tradingPair);
 
 	useEffect(() => {
@@ -19,7 +19,7 @@ export const useWebSocket = () => {
 
 		ws.onmessage = (event) => {
 			const data = JSON.parse(event.data);
-			const trade: Trade = {
+			const trade: ITrade = {
 				id: data.t,
 				price: data.p,
 				quantity: data.q,

@@ -12,7 +12,7 @@ import {
 import { useWebSocket } from "../../hooks/useWebsocket";
 import { CustomAxisTick } from "./CustomAxisTick";
 
-interface Trade {
+interface ITrade {
 	id: number;
 	price: string;
 	quantity: string;
@@ -22,7 +22,7 @@ interface Trade {
 export const SimpleLineChart: FC = () => {
 	const trades = useWebSocket();
 
-	const data = trades.map((trade: Trade) => ({
+	const data = trades.map((trade: ITrade) => ({
 		time: trade.time,
 		price: Number.parseFloat(trade.price),
 	}));

@@ -1,12 +1,12 @@
 import type { FC } from "react";
 
-interface CustomAxisTickProps {
+interface ICustomAxisTickProps {
 	x: number;
 	y: number;
 	payload: { value: string };
 }
 
-export const CustomAxisTick: FC<CustomAxisTickProps> = ({ x, y, payload }) => {
+export const CustomAxisTick: FC<ICustomAxisTickProps> = ({ x, y, payload }) => {
 	return (
 		<g transform={`translate(${x},${y})`}>
 			<text
