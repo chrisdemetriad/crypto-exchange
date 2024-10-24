@@ -2,7 +2,7 @@
 
 Thank you for taking the time to check my solution.
 
-Please navigate to the project directory then use `npm start` to start the app.
+Please navigate to the project directory, install packages using `npm install`, then use `npm start` to start the app.
 
 ## Features
 
