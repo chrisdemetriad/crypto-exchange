@@ -8,9 +8,17 @@ interface ITrade {
 	time: string;
 }
 
+import { throttle } from "lodash";
+import { useRef } from "react";
+
 export const useWebSocket = () => {
 	const [trades, setTrades] = useState<ITrade[]>([]);
 	const tradingPair = useTradingPairsStore((state) => state.tradingPair);
+	const throttledData = useRef(
+		throttle((trade: ITrade) => {
+			setTrades((prev) => [trade, ...prev].slice(0, 50));
+		}, 500),
+	);
 
 	useEffect(() => {
 		const ws = new WebSocket(
@@ -25,10 +33,13 @@ export const useWebSocket = () => {
 				quantity: data.q,
 				time: new Date(data.T).toLocaleTimeString(),
 			};
-			setTrades((prev) => [trade, ...prev].slice(0, 50));
+			throttledData.current(trade);
 		};
 
-		return () => ws.close();
+		return () => {
+			ws.close();
+			throttledData.current.cancel();
+		};
 	}, [tradingPair]);
 
 	return trades;
