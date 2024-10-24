@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { ThemeToggle } from "./components/ThemeToggle";
 import { TradeList } from "./components/TradeList";
 import { TradeSwitch } from "./components/TradeSwitch";
 import { SimpleBarChart } from "./components/charts/SimpleBarChart";
@@ -10,9 +11,8 @@ export const TradingApp: FC = () => {
 
 	return (
 		<div>
-			<header>
-				<h1>Binance Latest {tradingPair.toUpperCase()} Trades</h1>
-			</header>
+			<h1>Binance Latest {tradingPair.toUpperCase()} Trades</h1>
+			<ThemeToggle />
 			<TradeSwitch />
 			<SimpleLineChart />
 			<SimpleBarChart />

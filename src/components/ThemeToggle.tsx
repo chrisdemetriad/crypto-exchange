@@ -1,13 +1,18 @@
+import { Button, useMantineColorScheme } from "@mantine/core";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 import type { FC } from "react";
-import { useUserSettingsStore } from "../stores/useUserSettingsStore";
 
 export const ThemeToggle: FC = () => {
-	const theme = useUserSettingsStore((state) => state.theme);
-	const toggleTheme = useUserSettingsStore((state) => state.toggleTheme);
+	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+	const dark = colorScheme === "dark";
 
 	return (
-		<button type="button" onClick={toggleTheme}>
-			<p>Switch to {theme === "light" ? "Dark" : "Light"} Mode</p>
-		</button>
+		<Button
+			onClick={() => toggleColorScheme()}
+			variant="outline"
+			color={dark ? "yellow" : "blue"}
+		>
+			{dark ? <IconSun size={18} /> : <IconMoon size={18} />}
+		</Button>
 	);
 };
