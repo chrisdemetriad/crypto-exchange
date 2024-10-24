@@ -1,17 +1,13 @@
-import { MantineProvider, createTheme } from "@mantine/core";
+import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { TradingApp } from "./TradingApp";
+import { theme } from "./theme";
 
 const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement,
 );
-
-const theme = createTheme({
-	fontFamily: "sans-serif",
-	primaryColor: "orange",
-});
 
 root.render(
 	<React.StrictMode>

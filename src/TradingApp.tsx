@@ -1,3 +1,4 @@
+import { Title } from "@mantine/core";
 import type { FC } from "react";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { TradeList } from "./components/TradeList";
@@ -11,7 +12,10 @@ export const TradingApp: FC = () => {
 
 	return (
 		<div>
-			<h1>Binance Latest {tradingPair.toUpperCase()} Trades</h1>
+			<Title order={1} c="primary">
+				Binance Latest {tradingPair.toUpperCase()} Trades
+			</Title>
+
 			<ThemeToggle />
 			<TradeSwitch />
 			<SimpleLineChart />
