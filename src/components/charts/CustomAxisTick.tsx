@@ -13,6 +13,7 @@ export const CustomAxisTick: FC<ICustomAxisTickProps> = ({ x, y, payload }) => {
 				x={0}
 				y={0}
 				dy={16}
+				fontSize={12}
 				textAnchor="end"
 				fill="#666"
 				transform="rotate(-35)"

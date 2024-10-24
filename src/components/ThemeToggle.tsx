@@ -11,7 +11,7 @@ export const ThemeToggle: FC = () => {
 			variant="outline"
 			color="primary"
 		>
-			{dark ? <IconSun size={18} /> : <IconMoon size={18} />}
+			{dark ? <IconSun size={14} /> : <IconMoon size={14} />}
 		</Button>
 	);
 };

@@ -1,26 +1,28 @@
-import { Title } from "@mantine/core";
+import { Container, Grid } from "@mantine/core";
 import type { FC } from "react";
-import { ThemeToggle } from "./components/ThemeToggle";
 import { TradeList } from "./components/TradeList";
-import { TradeSwitch } from "./components/TradeSwitch";
 import { SimpleBarChart } from "./components/charts/SimpleBarChart";
 import { SimpleLineChart } from "./components/charts/SimpleLineChart";
-import { useTradingPairsStore } from "./stores/useTradingPairsStore";
+
+import { Header } from "./components/Header";
 
 export const TradingApp: FC = () => {
-	const { tradingPair } = useTradingPairsStore();
-
 	return (
-		<div>
-			<Title order={1} c="primary">
-				Binance Latest {tradingPair.toUpperCase()} Trades
-			</Title>
-
-			<ThemeToggle />
-			<TradeSwitch />
-			<SimpleLineChart />
-			<SimpleBarChart />
-			<TradeList />
-		</div>
+		<Container fluid>
+			<Grid grow>
+				<Grid.Col span={12} style={{ marginTop: 20 }}>
+					<Header />
+				</Grid.Col>
+				<Grid.Col span={12}>
+					<TradeList />
+				</Grid.Col>
+				<Grid.Col span={6}>
+					<SimpleLineChart />
+				</Grid.Col>
+				<Grid.Col span={6}>
+					<SimpleBarChart />
+				</Grid.Col>
+			</Grid>
+		</Container>
 	);
 };

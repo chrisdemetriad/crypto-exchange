@@ -6,6 +6,7 @@ interface ITrade {
 	price: string;
 	quantity: string;
 	time: string;
+	s: string;
 }
 
 import { throttle } from "lodash";
@@ -32,6 +33,7 @@ export const useWebSocket = () => {
 				price: data.p,
 				quantity: data.q,
 				time: new Date(data.T).toLocaleTimeString(),
+				s: data.s,
 			};
 			throttledData.current(trade);
 		};

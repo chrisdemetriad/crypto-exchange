@@ -6,6 +6,6 @@ interface ITradingPairsState {
 }
 
 export const useTradingPairsStore = create<ITradingPairsState>((set) => ({
-	tradingPair: "bnbbtc",
+	tradingPair: "btcusdt",
 	setTradingPair: (pair) => set({ tradingPair: pair }),
 }));

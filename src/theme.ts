@@ -3,10 +3,10 @@ import { createTheme, rem, virtualColor } from "@mantine/core";
 export const theme = createTheme({
 	fontFamily: "sans-serif",
 	headings: {
-		fontFamily: "Roboto",
+		fontFamily: "San Francisco",
 		sizes: {
 			h1: {
-				fontWeight: "700",
+				fontWeight: "100",
 				fontSize: rem(24),
 				lineHeight: "1.4",
 			},
@@ -15,8 +15,20 @@ export const theme = createTheme({
 	colors: {
 		primary: virtualColor({
 			name: "primary",
-			dark: "pink",
+			dark: "blue",
 			light: "blue",
 		}),
+	},
+	components: {
+		Table: {
+			styles: {
+				th: {
+					fontWeight: 400,
+				},
+				td: {
+					fontSize: "0.75rem",
+				},
+			},
+		},
 	},
 });

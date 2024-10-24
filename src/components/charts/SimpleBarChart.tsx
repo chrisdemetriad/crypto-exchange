@@ -3,7 +3,6 @@ import {
 	Bar,
 	BarChart,
 	CartesianGrid,
-	Legend,
 	ResponsiveContainer,
 	Tooltip,
 	XAxis,
@@ -12,11 +11,12 @@ import {
 import { useWebSocket } from "../../hooks/useWebsocket";
 import { CustomAxisTick } from "./CustomAxisTick";
 
-interface ITrade {
+export interface ITrade {
 	id: number;
 	price: string;
 	quantity: string;
 	time: string;
+	s: string;
 }
 
 export const SimpleBarChart: FC = () => {
@@ -28,22 +28,23 @@ export const SimpleBarChart: FC = () => {
 	}));
 
 	return (
-		<ResponsiveContainer width="100%" height={400}>
-			<BarChart
-				data={data}
-				margin={{
-					top: 20,
-					right: 30,
-					left: 20,
-					bottom: 10,
-				}}
-			>
+		<ResponsiveContainer width="100%" height={250}>
+			<BarChart data={data}>
 				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis dataKey="time" tick={(props) => <CustomAxisTick {...props} />} />
-				<YAxis type="number" domain={["dataMin", "dataMax"]} />
-				<Tooltip />
-				<Legend />
+				<XAxis
+					height={60}
+					stroke="#aaaaaa"
+					dataKey="time"
+					tick={(props) => <CustomAxisTick {...props} />}
+				/>
+				<YAxis
+					fontSize={12}
+					stroke="#aaaaaa"
+					type="number"
+					domain={["dataMin", "dataMax"]}
+				/>
 				<Bar dataKey="price" fill="#8884d8" />
+				<Tooltip />
 			</BarChart>
 		</ResponsiveContainer>
 	);
