@@ -5,7 +5,7 @@ export const TradeSwitch: FC = () => {
 	const setTradingPair = useTradingPairsStore((state) => state.setTradingPair);
 	const tradingPair = useTradingPairsStore((state) => state.tradingPair);
 
-	const pairs = ["bnbbtc", "ethbtc", "ltcbtc"];
+	const pairs = ["bnbbtc", "btcusdt", "ethbtc", "ethusd", "ethusdt", "ltcbtc"];
 
 	return (
 		<select
@@ -14,7 +14,7 @@ export const TradeSwitch: FC = () => {
 		>
 			{pairs.map((pair) => (
 				<option key={pair} value={pair}>
-					{pair.toUpperCase()}
+					{pair}
 				</option>
 			))}
 		</select>
