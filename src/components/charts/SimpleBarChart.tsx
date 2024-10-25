@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { useWebSocket } from "../../hooks/useWebsocket";
 import { CustomAxisTick } from "./CustomAxisTick";
+import { CustomTooltip } from "./CustomTooltip";
 
 export interface ITrade {
 	id: number;
@@ -50,7 +51,7 @@ export const SimpleBarChart: FC = () => {
 						domain={["dataMin", "dataMax"]}
 					/>
 					<Bar dataKey="price" fill="#8884d8" />
-					<Tooltip />
+					<Tooltip content={<CustomTooltip />} />
 				</BarChart>
 			)}
 		</ResponsiveContainer>
