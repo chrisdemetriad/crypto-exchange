@@ -19,7 +19,7 @@ export const ThemeToggle: FC = () => {
 	const shortcutKey = os === "macos" ? "⌘" : "Ctrl";
 	const tooltipLabel = (
 		<Flex align="center" gap="xs">
-			<Text>Switch to {dark ? "light" : "dark"} mode</Text>
+			<Text size="xs">Switch to {dark ? "light" : "dark"} mode</Text>
 			<Text size="xs" style={{ opacity: 0.7 }}>
 				({shortcutKey}+Shift+I)
 			</Text>
