@@ -1,5 +1,8 @@
 ## React Trading App
 
+![Kapture 2024-10-25 at 12 53 29](https://github.com/user-attachments/assets/bcaf6dc6-487f-470b-8329-b14bae1a4ba6)
+
+
 Thank you for taking the time to check my solution.
 
 Please navigate to the project directory, install packages using `npm install`, then use `npm start` to start the app.
