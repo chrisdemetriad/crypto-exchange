@@ -23,9 +23,8 @@ export const useWebSocket = () => {
 		setLoading(true);
 		setTrades([]);
 
-		const ws = new WebSocket(
-			`wss://stream.binance.com:9443/ws/${tradingPair}@trade`,
-		);
+		const wsUri = `${process.env.REACT_APP_WEBSOCKET_URI}${tradingPair}@trade`;
+		const ws = new WebSocket(wsUri);
 
 		ws.onopen = () => {
 			setLoading(false);
