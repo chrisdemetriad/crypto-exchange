@@ -1,4 +1,4 @@
-import { Box, Text } from "@mantine/core";
+import { Paper, Text } from "@mantine/core";
 import type { FC } from "react";
 
 interface ICustomTooltipProps {
@@ -17,9 +17,8 @@ export const CustomTooltip: FC<ICustomTooltipProps> = ({
 }) => {
 	if (active && payload && payload.length) {
 		return (
-			<Box
+			<Paper
 				style={{
-					backgroundColor: "#ffffff",
 					padding: "10px",
 					border: "1px solid #ccc",
 					borderRadius: 5,
@@ -27,7 +26,7 @@ export const CustomTooltip: FC<ICustomTooltipProps> = ({
 			>
 				<Text size="xs">Time: {label}</Text>
 				<Text size="xs">Price: {payload[0].value.toFixed(2)} $</Text>
-			</Box>
+			</Paper>
 		);
 	}
 
