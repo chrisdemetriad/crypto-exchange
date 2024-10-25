@@ -1,3 +1,4 @@
+import { Center, Text } from "@mantine/core";
 import type { FC } from "react";
 import {
 	Bar,
@@ -29,23 +30,29 @@ export const SimpleBarChart: FC = () => {
 
 	return (
 		<ResponsiveContainer width="100%" height={250}>
-			<BarChart data={data}>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis
-					height={60}
-					stroke="#aaaaaa"
-					dataKey="time"
-					tick={(props) => <CustomAxisTick {...props} />}
-				/>
-				<YAxis
-					fontSize={12}
-					stroke="#aaaaaa"
-					type="number"
-					domain={["dataMin", "dataMax"]}
-				/>
-				<Bar dataKey="price" fill="#8884d8" />
-				<Tooltip />
-			</BarChart>
+			{data.length === 0 ? (
+				<Center style={{ width: "100%", height: "100%" }}>
+					<Text size="xs">No trading charts yet</Text>
+				</Center>
+			) : (
+				<BarChart data={data}>
+					<CartesianGrid strokeDasharray="3 3" />
+					<XAxis
+						height={60}
+						stroke="#aaaaaa"
+						dataKey="time"
+						tick={(props) => <CustomAxisTick {...props} />}
+					/>
+					<YAxis
+						fontSize={12}
+						stroke="#aaaaaa"
+						type="number"
+						domain={["dataMin", "dataMax"]}
+					/>
+					<Bar dataKey="price" fill="#8884d8" />
+					<Tooltip />
+				</BarChart>
+			)}
 		</ResponsiveContainer>
 	);
 };

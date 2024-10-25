@@ -1,4 +1,4 @@
-import { Pill, ScrollArea, Table } from "@mantine/core";
+import { Center, Pill, ScrollArea, Table, Text } from "@mantine/core";
 import cx from "clsx";
 import { type FC, useState } from "react";
 import { useWebSocket } from "../hooks/useWebsocket";
@@ -19,6 +19,14 @@ export const TradeList: FC = () => {
 			<Table.Td>{trade.time}</Table.Td>
 		</Table.Tr>
 	));
+
+	if (trades.length === 0) {
+		return (
+			<Center style={{ height: 300 }}>
+				<Text size="xs">No trading data yet</Text>
+			</Center>
+		);
+	}
 
 	return (
 		<ScrollArea

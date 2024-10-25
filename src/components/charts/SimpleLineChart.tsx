@@ -1,3 +1,4 @@
+import { Center, Text } from "@mantine/core";
 import type { FC } from "react";
 import {
 	CartesianGrid,
@@ -22,23 +23,29 @@ export const SimpleLineChart: FC = () => {
 
 	return (
 		<ResponsiveContainer width="100%" height={250}>
-			<LineChart data={data}>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis
-					dataKey="time"
-					stroke="#aaaaaa"
-					height={60}
-					tick={(props) => <CustomAxisTick {...props} />}
-				/>
-				<YAxis
-					fontSize={12}
-					stroke="#aaaaaa"
-					type="number"
-					domain={["dataMin", "dataMax"]}
-				/>
-				<Line type="monotone" dataKey="price" stroke="#8884d8" />
-				<Tooltip />
-			</LineChart>
+			{data.length === 0 ? (
+				<Center style={{ width: "100%", height: "100%" }}>
+					<Text size="xs">No trading charts yet</Text>
+				</Center>
+			) : (
+				<LineChart data={data}>
+					<CartesianGrid strokeDasharray="3 3" />
+					<XAxis
+						dataKey="time"
+						stroke="#aaaaaa"
+						height={60}
+						tick={(props) => <CustomAxisTick {...props} />}
+					/>
+					<YAxis
+						fontSize={12}
+						stroke="#aaaaaa"
+						type="number"
+						domain={["dataMin", "dataMax"]}
+					/>
+					<Line type="monotone" dataKey="price" stroke="#8884d8" />
+					<Tooltip />
+				</LineChart>
+			)}
 		</ResponsiveContainer>
 	);
 };
