@@ -18,3 +18,16 @@
 .scrolled {
   box-shadow: var(--mantine-shadow-sm);
 }
+
+@keyframes highlightFade {
+  0% {
+    background-color: #cdcce7;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.highlightRow {
+  animation: highlightFade 1s ease-out;
+}

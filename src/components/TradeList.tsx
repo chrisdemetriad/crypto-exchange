@@ -1,15 +1,23 @@
 import { Center, Pill, ScrollArea, Table, Text } from "@mantine/core";
 import cx from "clsx";
-import { type FC, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import { useWebSocket } from "../hooks/useWebsocket";
 import classes from "./TradeList.module.css";
 
 export const TradeList: FC = () => {
 	const trades = useWebSocket();
 	const [scrolled, setScrolled] = useState(false);
+	const [key, setKey] = useState(0);
 
-	const rows = trades.map((trade) => (
-		<Table.Tr key={trade.id}>
+	useEffect(() => {
+		setKey((prev) => prev + 1);
+	}, []);
+
+	const rows = trades.map((trade, index) => (
+		<Table.Tr
+			key={`${key}-${trade.id}`}
+			className={cx({ [classes.highlightRow]: index === 0 })}
+		>
 			<Table.Td>
 				<Pill size="xs">{trade.s}</Pill>
 			</Table.Td>
