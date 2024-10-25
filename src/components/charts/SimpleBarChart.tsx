@@ -1,4 +1,4 @@
-import { Center, Text } from "@mantine/core";
+import { Badge, Box, Center, Text } from "@mantine/core";
 import type { FC } from "react";
 import {
 	Bar,
@@ -22,20 +22,35 @@ export interface ITrade {
 }
 
 export const SimpleBarChart: FC = () => {
-	const trades = useWebSocket();
+	const { trades, loading } = useWebSocket();
 
 	const data = trades.map((trade: ITrade) => ({
 		time: trade.time,
 		price: Number.parseFloat(trade.price),
 	}));
 
+	if (loading) {
+		return (
+			<Center style={{ width: "100%", height: 250 }}>
+				<Text size="xs">Loading chart data</Text>
+			</Center>
+		);
+	}
+
+	if (data.length === 0) {
+		return (
+			<Center style={{ width: "100%", height: 250 }}>
+				<Text size="xs">No trading charts yet</Text>
+			</Center>
+		);
+	}
+
 	return (
-		<ResponsiveContainer width="100%" height={250}>
-			{data.length === 0 ? (
-				<Center style={{ width: "100%", height: "100%" }}>
-					<Text size="xs">No trading charts yet</Text>
-				</Center>
-			) : (
+		<Box>
+			<Badge color="blue" variant="dot">
+				Price distribution
+			</Badge>
+			<ResponsiveContainer width="100%" height={220}>
 				<BarChart data={data}>
 					<CartesianGrid strokeDasharray="3 3" />
 					<XAxis
@@ -53,7 +68,7 @@ export const SimpleBarChart: FC = () => {
 					<Bar dataKey="price" fill="#8884d8" />
 					<Tooltip content={<CustomTooltip />} />
 				</BarChart>
-			)}
-		</ResponsiveContainer>
+			</ResponsiveContainer>
+		</Box>
 	);
 };

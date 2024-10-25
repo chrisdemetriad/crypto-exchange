@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { throttle } from "lodash";
+import { useEffect, useRef, useState } from "react";
 import { useTradingPairsStore } from "../stores/useTradingPairsStore";
 
 interface ITrade {
@@ -9,12 +10,9 @@ interface ITrade {
 	s: string;
 }
 
-import { throttle } from "lodash";
-import { useRef } from "react";
-
 export const useWebSocket = () => {
 	const [trades, setTrades] = useState<ITrade[]>([]);
-	const tradingPair = useTradingPairsStore((state) => state.tradingPair);
+	const { tradingPair, setLoading } = useTradingPairsStore();
 	const throttledData = useRef(
 		throttle((trade: ITrade) => {
 			setTrades((prev) => [trade, ...prev].slice(0, 50));
@@ -22,9 +20,16 @@ export const useWebSocket = () => {
 	);
 
 	useEffect(() => {
+		setLoading(true);
+		setTrades([]);
+
 		const ws = new WebSocket(
 			`wss://stream.binance.com:9443/ws/${tradingPair}@trade`,
 		);
+
+		ws.onopen = () => {
+			setLoading(false);
+		};
 
 		ws.onmessage = (event) => {
 			const data = JSON.parse(event.data);
@@ -42,7 +47,7 @@ export const useWebSocket = () => {
 			ws.close();
 			throttledData.current.cancel();
 		};
-	}, [tradingPair]);
+	}, [tradingPair, setLoading]);
 
-	return trades;
+	return { trades, loading: useTradingPairsStore((state) => state.loading) };
 };
