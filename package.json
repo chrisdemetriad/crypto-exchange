@@ -7,10 +7,6 @@
     "@mantine/core": "^7.13.4",
     "@mantine/hooks": "^7.13.4",
     "@tabler/icons-react": "^3.20.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
     "@types/lodash": "^4.17.12",
     "@types/node": "^16.18.115",
     "@types/react": "^18.3.12",
@@ -40,5 +36,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.2",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.14"
   }
 }
