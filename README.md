@@ -1,57 +1,51 @@
-## React Trading App
-
 ![Kapture 2024-10-25 at 12 53 29](https://github.com/user-attachments/assets/bcaf6dc6-487f-470b-8329-b14bae1a4ba6)
 
+## **Crypto Trading Dashboard**
 
-Thank you for taking the time to check my solution.
+A real-time cryptocurrency trading dashboard that fetches and visualises trading data from Binance. The app shows live trade updates, interactive charts and supports switching between different trading pairs.
 
-Please navigate to the project directory, install packages using `npm install`, then use `npm start` to start the app.
+### **Overview**
 
-## Features
+This application connects to Binance's WebSocket API to stream live trade data for selected cryptocurrency pairs. Users can monitor price trends in real-time through dynamic line and bar charts and toggle between light and dark themes for a customisable experience.
 
-- Basic React app with TypeScript (cra), Zustand for state management
-- Trading pair selector
-- Price trend visualisation chart
-- Throttler
-- Unit tests
-- Theme switcher
+### **Features**
 
-## Considerations
+- **Real-Time Trade Updates:** Live updates for selected trading pairs.
+- **Interactive Charts:** Line and bar charts for data visualisation.
+- **Trading Pair Switcher:** Easily switch between multiple pairs (e.g. BTC/USDT, ETH/BTC).
+- **Light/Dark Mode:** Toggle theme based on user preference.
+- **Optimised Performance:** Data throttling for smooth rendering.
 
-I am thinking of using a custom hook for the WebSocket connection to emphasise on the logic encapsulation and cleanliness plus it would be easier to test the unit in isolation. There are numerous benefits, such as maintainability, scalability, etc.
+### **Tech Stack**
 
-I would like to add a dark/light theme switcher to showcase the fact that I am using two separate stores, one for the theme settings and one for the trading pair, and I would like to avoid props drilling for performance reasons.
+- **Frontend:** React, Mantine UI
+- **State Management:** Zustand
+- **Data Visualisation:** Recharts
+- **WebSocket Integration:** Binance API
 
-I would be writing a trading pair selector so that the user could easily switch to different currencies.
+### **Installation**
 
-Might have to consider throttling or debouncing the updates to avoid excessive re-renders.
-
-I would be using MUI as a design framework with some CSS thrown in and would probably leverage the sx prop they provide - if needed - as a one-off and use their ThemeProvider if I need more consistent styles. For consistency (and scalability) reasons, we can't rely on `sx` - at scale.
-
-I would then need to find a chart library such a Recharts or Charts.js to show the price trends, I am not sure what I will go with at this point.
-
-## File structure
-
-```
-App.tsx
-index.tsx
-
-src/
-  components/
-    ─ CurrenciesList.tsx
-    ─ CurrencySelector.tsx
-    ─ Chart.tsx
-    ─ ThemeSwitcher.tsx
-  hooks/
-  ─ useWebSocket.ts
-  stores/
-    - useUserSettingsStore.ts
-    - useTradingPairsStore.ts
-
-styles/ or a theme folder to keep the global styles, provider, etc - useStore.ts
+```bash
+git clone <repository-url>
+cd <project-folder>
+npm install
+npm start
 ```
 
-## Data structure
+Ensure you have the following environment variable set in your `.env` file:
+
+```env
+REACT_APP_WEBSOCKET_URI=wss://stream.binance.com:9443/ws/
+```
+
+### **Usage**
+
+1. Start the development server: `npm start`
+2. Select your preferred trading pair.
+3. Monitor live trades and visualise data on charts.
+4. Switch themes using the toggle button.
+
+### Data structure
 
 Expected data format:
 
@@ -69,6 +63,18 @@ Expected data format:
 }
 ```
 
-## Useful links:
+### Useful links:
 
 [Binance API](https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams)
+
+### **Contributing**
+
+Contributions are welcome! Please fork the repository and create a pull request with your improvements.
+
+### **License**
+
+This project is licensed under the **MIT License** – you are free to use, modify, and distribute this software with proper attribution.
+
+### **Feedback**
+
+If you encounter any issues or have any suggestions, feel free to open an issue or reach out via email.
